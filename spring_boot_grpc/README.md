@@ -1,4 +1,16 @@
-1. Run locally on native host
+1. This repo benchmark gRPC Spring Boot Starter version 2.12.0.RELEASE (https://github.com/yidongnan/grpc-spring-boot-starter)
+Other flavour of Spring Boot Grpc is LogNet (https://github.com/LogNet/grpc-spring-boot-starter). That repo has more Netty settings we can try
+Feel free to modify po.xml to test, e.g.:
+
+```aidl
+<dependency>
+  <groupId>io.github.lognet</groupId>
+  <artifactId>grpc-spring-boot-starter</artifactId>
+  <version>4.5.5</version>
+</dependency>
+```
+
+2. Run locally on native host
 
 Start SERVER
 
@@ -25,7 +37,7 @@ grpcurl --plaintext -d '{"request":{"name":"a name","d":4.55332,"f":232.3,"b":tr
 
 ```
 
-2. Run from a docker and hence we can benchmark it by ghz
+3. Run from a docker and hence we can benchmark it by ghz
 
 From root folder of grpc_bench
 
