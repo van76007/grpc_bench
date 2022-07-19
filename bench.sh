@@ -6,15 +6,15 @@ BENCHMARKS_TO_RUN="${@}"
 BENCHMARKS_TO_RUN="${BENCHMARKS_TO_RUN:-$(find . -maxdepth 1 -name '*_bench' -type d | sort)}"
 
 RESULTS_DIR="results/$(date '+%y%d%mT%H%M%S')"
-export GRPC_BENCHMARK_DURATION=${GRPC_BENCHMARK_DURATION:-"20s"}
-export GRPC_BENCHMARK_WARMUP=${GRPC_BENCHMARK_WARMUP:-"5s"}
-export GRPC_SERVER_CPUS=${GRPC_SERVER_CPUS:-"1"}
+export GRPC_BENCHMARK_DURATION=${GRPC_BENCHMARK_DURATION:-"70s"}
+export GRPC_BENCHMARK_WARMUP=${GRPC_BENCHMARK_WARMUP:-"10s"}
+export GRPC_SERVER_CPUS=${GRPC_SERVER_CPUS:-"2"}
 export GRPC_SERVER_RAM=${GRPC_SERVER_RAM:-"512m"}
 export GRPC_CLIENT_CONNECTIONS=${GRPC_CLIENT_CONNECTIONS:-"50"}
 export GRPC_CLIENT_CONCURRENCY=${GRPC_CLIENT_CONCURRENCY:-"1000"}
 export GRPC_CLIENT_QPS=${GRPC_CLIENT_QPS:-"0"}
 export GRPC_CLIENT_QPS=$(( GRPC_CLIENT_QPS / GRPC_CLIENT_CONCURRENCY ))
-export GRPC_CLIENT_CPUS=${GRPC_CLIENT_CPUS:-"1"}
+export GRPC_CLIENT_CPUS=${GRPC_CLIENT_CPUS:-"2"}
 export GRPC_REQUEST_SCENARIO=${GRPC_REQUEST_SCENARIO:-"complex_proto"}
 export GRPC_IMAGE_NAME="${GRPC_IMAGE_NAME:-grpc_bench}"
 
@@ -79,6 +79,8 @@ for benchmark in ${BENCHMARKS_TO_RUN}; do
     		--proto=/proto/helloworld/helloworld.proto \
     		--call=helloworld.Greeter.SayHello \
             --insecure \
+            --count-errors \
+            --enable-compression \
             --concurrency="${GRPC_CLIENT_CONCURRENCY}" \
             --connections="${GRPC_CLIENT_CONNECTIONS}" \
             --rps="${GRPC_CLIENT_QPS}" \

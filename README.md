@@ -42,7 +42,14 @@ Linux or MacOS with Docker. Keep in mind that the results on MacOS may not be th
 # Running benchmark
 To build the benchmarks images use: `./build.sh [BENCH1] [BENCH2] ...` . You need them to run the benchmarks.
 
+Monitor progress
+
+```aidl
+tail -f -n 5 scala_akka_bench.tmp
+```
+
 To run the benchmarks use: `./bench.sh [BENCH1] [BENCH2] ...` . They will be run sequentially.
+Result available: results/${time_stamp}
 
 To clean-up the benchmark images use: `./clean.sh [BENCH1] [BENCH2] ...`
 
