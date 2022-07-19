@@ -1,4 +1,4 @@
-1. This repo benchmark Spring Boot Grpc repo: https://github.com/yidongnan/grpc-spring-boot-starter
+1. This repo benchmark LogNet: https://github.com/LogNet/grpc-spring-boot-starter
 
 2. Run locally on native host
 
