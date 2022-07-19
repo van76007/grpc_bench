@@ -1,5 +1,5 @@
 1. This repo benchmark Spring Boot Grpc repo: https://github.com/yidongnan/grpc-spring-boot-starter
-Other flavour of Spring Boot Grpc is LogNet: https://github.com/LogNet/grpc-spring-boot-starter
+Other variant of Spring Boot Grpc is LogNet: https://github.com/LogNet/grpc-spring-boot-starter
 That repo has more Netty settings. Feel free to modify pom.xml to test, e.g.:
 
 ```aidl
