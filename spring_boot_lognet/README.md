@@ -34,3 +34,5 @@ tail -f -n 5 spring_boot_grpc.tmp
 If no error then can start benchmark code
 ./bench.sh spring_boot_grpc
 ```
+
+Can connect JMX via 'localhost:5000'

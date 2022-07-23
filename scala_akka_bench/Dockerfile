@@ -2,6 +2,8 @@ FROM hseeberger/scala-sbt:11.0.7_1.3.13_2.11.12 as BUILDER
 
 WORKDIR /app
 
+EXPOSE 5000
+
 # Make sure docker can cache a few static setup things
 
 # initialize only sbt
@@ -29,7 +31,7 @@ RUN sbt assembly
 FROM openjdk:18.0.1
 
 ENV GC "-XX:+UseParallelGC"
-ENV _JAVA_OPTIONS "${GC} -XX:MinRAMPercentage=70 -XX:MaxRAMPercentage=70"
+ENV _JAVA_OPTIONS "${GC} -XX:MinRAMPercentage=70 -XX:MaxRAMPercentage=70 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.port=5000 -Dcom.sun.management.jmxremote.rmi.port=5000 -Djava.rmi.server.hostname=0.0.0.0 -Dcom.sun.management.jmxremote.host=0.0.0.0"
 
 COPY --from=builder /app/target/scala-2.13/akka-grpc-quickstart-scala-assembly-1.0.jar .
 
