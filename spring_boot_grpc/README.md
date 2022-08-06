@@ -36,3 +36,9 @@ If no error then can start benchmark code
 ```
 
 Can connect JMX via 'localhost:5000'
+
+Can sniff:
+
+```aidl
+5e3a792b545c
+```

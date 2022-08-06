@@ -26,13 +26,13 @@ grpcurl --plaintext -d '{"request":{"name":"a name","d":4.55332,"f":232.3,"b":tr
 
 ```
 From root folder of grpc_bench
-./build.sh spring_boot_grpc
+./build.sh spring_boot_lognet
 
 In other terminal, run this command to check if there any error
-tail -f -n 5 spring_boot_grpc.tmp
+tail -f -n 5 spring_boot_lognet.tmp
 
 If no error then can start benchmark code
-./bench.sh spring_boot_grpc
+./bench.sh spring_boot_lognet
 ```
 
 Can connect JMX via 'localhost:5000'

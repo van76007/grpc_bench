@@ -6,7 +6,7 @@ BENCHMARKS_TO_RUN="${@}"
 BENCHMARKS_TO_RUN="${BENCHMARKS_TO_RUN:-$(find . -maxdepth 1 -name '*_bench' -type d | sort)}"
 
 RESULTS_DIR="results/$(date '+%y%d%mT%H%M%S')"
-export GRPC_BENCHMARK_DURATION=${GRPC_BENCHMARK_DURATION:-"70s"}
+export GRPC_BENCHMARK_DURATION=${GRPC_BENCHMARK_DURATION:-"300s"}
 export GRPC_BENCHMARK_WARMUP=${GRPC_BENCHMARK_WARMUP:-"10s"}
 export GRPC_SERVER_CPUS=${GRPC_SERVER_CPUS:-"2"}
 export GRPC_SERVER_RAM=${GRPC_SERVER_RAM:-"512m"}
@@ -58,7 +58,6 @@ for benchmark in ${BENCHMARKS_TO_RUN}; do
 		-e GRPC_SERVER_CPUS \
 		-e GRPC_SERVER_RAM \
 		-p 50051:50051 \
-		-p 5000:5000 \
 		--detach \
 		--tty \
 		"$GRPC_IMAGE_NAME:${NAME}-$GRPC_REQUEST_SCENARIO" >/dev/null
